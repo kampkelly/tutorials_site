@@ -1,0 +1,33 @@
+{
+  "name": "tutorials_site",
+  "version": "1.0.0",
+  "description": "A website built with nodejs and react to show list of tutorials",
+  "main": "server/index.js",
+  "scripts": {
+    "babel-node": "babel-node --presets=env",
+    "babel-watch": "babel-watch server/index.js",
+    "dev": "cross-env process.env.NODE_ENV=development && npm run babel-node server/index.js",
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kampkelly/tutorials_site.git"
+  },
+  "author": "Runor Adjekpiyede",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kampkelly/tutorials_site/issues"
+  },
+  "homepage": "https://github.com/kampkelly/tutorials_site#readme",
+  "dependencies": {
+    "cross-env": "^5.2.0",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "babel-watch": "^2.0.7"
+  }
+}
