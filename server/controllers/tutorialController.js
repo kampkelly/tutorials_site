@@ -26,6 +26,19 @@ export default class TutorialController {
         .catch(error => res.status(500).json(error));
     }
     
+    static showTutorial(req, res) {
+        Tutorials.findOne({
+            where: { 'id': req.params.id },
+        }).then((tutorial) => {
+            if (tutorial) {
+                res.status(200).json({ message: 'tutorial retrieved', success: true, tutorial })
+            } else {
+                res.status(404).json({ message: 'this tutorial does not exist', success: false });
+            }
+        })
+        .catch(error => res.status(500).json(error));
+    }
+
     static editTutorial(req, res) {
         Tutorials.findOne({
             where: { 'id': req.params.id },
@@ -33,11 +46,11 @@ export default class TutorialController {
             if (tutorial) {
                 tutorial.update(req.body)
                 .then((updatedTutorial) => {
-                    res.status(200).json({message: 'tutorial updated successfully', success: true, updatedTutorial})
+                    res.status(200).json({ message: 'tutorial updated successfully', success: true, updatedTutorial })
                 })
                 .catch(error => res.status(500).json(error));
             } else {
-                res.status(404).json('tutorial cannot be found');
+                res.status(404).json({ message: 'tutorial cannot be found', success: false });
             }
         })
         .catch(error => res.status(500).json(error));
