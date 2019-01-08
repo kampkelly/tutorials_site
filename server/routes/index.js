@@ -8,6 +8,7 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/tutorials', TutorialController.getTutorials);
 router.post('/create/tutorial', TutorialController.createTutorial);
 
 export default router;
