@@ -10,6 +10,7 @@ router.get('/', (req, res) => {
 
 router.get('/tutorials', TutorialController.getTutorials);
 router.post('/create/tutorial', TutorialController.createTutorial);
+router.get('/tutorials/:id', TutorialController.showTutorial);
 router.put('/tutorials/:id/edit', TutorialController.editTutorial);
 
 export default router;
