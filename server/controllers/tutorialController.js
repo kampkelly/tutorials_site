@@ -25,4 +25,21 @@ export default class TutorialController {
         })
         .catch(error => res.status(500).json(error));
     }
+    
+    static editTutorial(req, res) {
+        Tutorials.findOne({
+            where: { 'id': req.params.id },
+        }).then((tutorial) => {
+            if (tutorial) {
+                tutorial.update(req.body)
+                .then((updatedTutorial) => {
+                    res.status(200).json({message: 'tutorial updated successfully', success: true, updatedTutorial})
+                })
+                .catch(error => res.status(500).json(error));
+            } else {
+                res.status(404).json('tutorial cannot be found');
+            }
+        })
+        .catch(error => res.status(500).json(error));
+    }
 }
