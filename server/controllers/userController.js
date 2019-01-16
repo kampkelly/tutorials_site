@@ -18,7 +18,7 @@ export default class UserController {
                 })
                 .catch(error => res.status(409).json({ message: error, status: false })));
     }
-   
+
     static signginUser(req, res) {
         const { email, password } = req.body;
         User.findOne({ where: { email } })
@@ -33,6 +33,31 @@ export default class UserController {
                     }
                 } else {
                     res.status(401).json({ message: 'wrong email/password', status: false });
+                }
+            })
+            .catch(error => res.status(400).json({ message: error, status: false }));
+    }
+
+    static retrieveUsers(req, res) {
+        User.findAll({
+            attributes: ['name', 'email', 'createdAt', 'updatedAt']
+        })
+            .then((users) => {
+                res.status(200).json({ message: 'users retrieved', status: true, users });
+            })
+            .catch(error => res.status(400).json({ message: error, status: false }));
+    }
+    
+    static retrieveOneUser(req, res) {
+        User.findOne({ 
+            where: { id: req.params.id }, 
+            attributes: ['name', 'email', 'createdAt', 'updatedAt']
+        })
+            .then((user) => {
+                if (user) {
+                    res.status(200).json({ message: 'user has been retrieved', status: true, user });
+                } else {
+                    res.status(404).json({ message: 'user not found', status: false });
                 }
             })
             .catch(error => res.status(400).json({ message: error, status: false }));

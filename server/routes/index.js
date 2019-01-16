@@ -16,5 +16,7 @@ router.put('/tutorials/:id/edit', TutorialController.editTutorial);
 
 router.post('/signup_user', UserController.signgupUser);
 router.post('/signin_user', UserController.signginUser);
+router.get('/users', UserController.retrieveUsers);
+router.get('/users/:id', UserController.retrieveOneUser);
 
 export default router;
