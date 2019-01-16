@@ -15,5 +15,6 @@ router.get('/tutorials/:id', TutorialController.showTutorial);
 router.put('/tutorials/:id/edit', TutorialController.editTutorial);
 
 router.post('/signup_user', UserController.signgupUser);
+router.post('/signin_user', UserController.signginUser);
 
 export default router;
