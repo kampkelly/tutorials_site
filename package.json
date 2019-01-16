@@ -7,7 +7,14 @@
     "babel-node": "babel-node --presets=env",
     "babel-watch": "babel-watch server/index.js",
     "dev": "cross-env process.env.NODE_ENV=development && npm run babel-node server/index.js",
+    "migration": "node_modules/.bin/sequelize db:migrate",
     "test": "npm run test"
+  },
+  "helpful commands": {
+    "//": [
+      "sequelize generate migration: node_modules/.bin/sequelize model:generate --name User --attributes firstName:string,lastName:string,email:string",
+      "second line"
+    ]
   },
   "repository": {
     "type": "git",
@@ -20,10 +27,12 @@
   },
   "homepage": "https://github.com/kampkelly/tutorials_site#readme",
   "dependencies": {
+    "bcrypt": "^3.0.1",
     "body-parser": "^1.18.3",
     "cross-env": "^5.2.0",
     "dotenv": "^6.0.0",
     "express": "^4.16.4",
+    "jsonwebtoken": "^8.3.0",
     "pg": "^7.4.3",
     "pg-hstore": "^2.3.2",
     "sequelize": "^4.39.0",
